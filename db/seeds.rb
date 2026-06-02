@@ -7,7 +7,8 @@ Request.create!(
   date: Date.today + 1.day,
   start_time: "14:00",
   end_time: "16:00",
-  location: "Overijse"
+  location: "Herk-De-Stad",
+  note: "Sara heeft haar helm al mee 😊"
 )
 
 Request.create!(

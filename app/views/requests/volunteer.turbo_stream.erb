@@ -1,0 +1,5 @@
+<%= turbo_stream.replace dom_id(@request) do %>
+  <%= turbo_frame_tag dom_id(@request) do %>
+    <%= render "request", request: @request %>
+  <% end %>
+<% end %>

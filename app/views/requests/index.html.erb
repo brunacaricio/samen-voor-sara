@@ -12,47 +12,13 @@
       </p>
     </div>
 
-    <div class="mt-10 space-y-5">
+    <div class="mt-10 flex flex-col gap-5">
 
       <% @requests.each do |request| %>
 
-        <div class="bg-white rounded-[28px] p-6 shadow-sm border border-white/50">
-
-          <div class="flex items-start justify-between gap-4">
-
-            <div>
-
-              <p class="text-pink-500 font-bold uppercase tracking-wide text-sm">
-                <%= l(request.date, format: :long).capitalize %>
-              </p>
-
-              <h2 class="mt-2 text-2xl font-extrabold text-slate-800 leading-snug">
-                <%= request.title %>
-              </h2>
-
-              <div class="mt-4 space-y-1 text-slate-500">
-
-                <p>
-                  🕒 <%= request.start_time %> - <%= request.end_time %>
-                </p>
-
-                <% if request.location.present? %>
-                  <p>
-                    📍 <%= request.location %>
-                  </p>
-                <% end %>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <button class="mt-6 w-full bg-pink-400 hover:bg-pink-500 transition text-white font-bold py-4 rounded-full">
-            Ik wil helpen
-          </button>
-
-        </div>
+        <%= turbo_frame_tag dom_id(request), class: "block" do %>
+          <%= render "request", request: request %>
+        <% end %>
 
       <% end %>
 

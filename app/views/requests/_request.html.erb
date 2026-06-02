@@ -1,0 +1,57 @@
+<div class="bg-white rounded-[28px] p-6 shadow-sm border border-white/50">
+
+  <p class="text-pink-500 font-bold uppercase tracking-wide text-sm">
+    <%= l(request.date, format: :long).capitalize %>
+  </p>
+
+  <h2 class="mt-2 text-2xl font-extrabold text-slate-800 leading-snug">
+    <%= request.title %>
+  </h2>
+
+  <div class="mt-4 space-y-1 text-slate-500">
+
+    <p>
+      🕒 <%= request.start_time %> - <%= request.end_time %>
+    </p>
+
+    <% if request.location.present? %>
+      <p>
+        📍 <%= request.location %>
+      </p>
+    <% end %>
+
+    <% if request.note.present? %>
+
+      <div class="mt-4 bg-[#FAF7F4] rounded-2xl p-4 text-slate-600 leading-relaxed">
+        <%= request.note %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+  <% if request.volunteer_name.present? %>
+
+    <div class="mt-6 bg-green-50 text-green-700 rounded-full px-4 py-3 text-center font-bold">
+      💛 <%= request.volunteer_name %> helpt hierbij
+    </div>
+
+  <% else %>
+
+    <%= form_with url: volunteer_request_path(request),
+              method: :patch,
+              local: true,
+              class: "mt-6" do |f| %>
+
+      <%= f.text_field :volunteer_name,
+            placeholder: "Jouw naam",
+            class: "w-full rounded-2xl border border-slate-200 px-4 py-3 mb-3" %>
+
+      <%= f.submit "Ik wil helpen",
+            class: "w-full bg-pink-400 hover:bg-pink-500 transition text-white font-bold py-4 rounded-full cursor-pointer" %>
+
+    <% end %>
+
+  <% end %>
+
+</div>
