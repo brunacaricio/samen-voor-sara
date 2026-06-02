@@ -1,2 +1,61 @@
-<h1>Requests#index</h1>
-<p>Find me in app/views/requests/index.html.erb</p>
+<div class="min-h-screen bg-[#FAF7F4]">
+  <div class="max-w-md mx-auto px-4 py-10">
+
+    <div class="text-center">
+      <h1 class="text-4xl font-extrabold text-slate-800 leading-tight">
+        Samen voor Sara 💛
+      </h1>
+
+      <p class="mt-4 text-slate-600 leading-relaxed text-lg">
+        Alles is vrijblijvend.
+        Bedankt om mee te helpen op de momenten die voor jou passen.
+      </p>
+    </div>
+
+    <div class="mt-10 space-y-5">
+
+      <% @requests.each do |request| %>
+
+        <div class="bg-white rounded-[28px] p-6 shadow-sm border border-white/50">
+
+          <div class="flex items-start justify-between gap-4">
+
+            <div>
+
+              <p class="text-pink-500 font-bold uppercase tracking-wide text-sm">
+                <%= l(request.date, format: :long).capitalize %>
+              </p>
+
+              <h2 class="mt-2 text-2xl font-extrabold text-slate-800 leading-snug">
+                <%= request.title %>
+              </h2>
+
+              <div class="mt-4 space-y-1 text-slate-500">
+
+                <p>
+                  🕒 <%= request.start_time %> - <%= request.end_time %>
+                </p>
+
+                <% if request.location.present? %>
+                  <p>
+                    📍 <%= request.location %>
+                  </p>
+                <% end %>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <button class="mt-6 w-full bg-pink-400 hover:bg-pink-500 transition text-white font-bold py-4 rounded-full">
+            Ik wil helpen
+          </button>
+
+        </div>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>
