@@ -15,4 +15,14 @@ class RequestsController < ApplicationController
       format.html { redirect_to root_path }
     end
   end
+
+  def remove_volunteer
+    @request = Request.find(params[:id])
+
+    @request.update(
+      volunteer_name: nil
+    )
+
+    redirect_to admin_requests_path
+  end
 end

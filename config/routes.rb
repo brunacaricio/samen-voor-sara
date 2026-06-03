@@ -6,6 +6,15 @@ Rails.application.routes.draw do
   resources :requests do
     member do
       patch :volunteer
+      patch :remove_volunteer
+    end
+  end
+
+  namespace :admin do
+    resources :requests do
+      member do
+        patch :remove_volunteer
+      end
     end
   end
 end

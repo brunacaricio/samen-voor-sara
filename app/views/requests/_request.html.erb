@@ -38,19 +38,52 @@
 
   <% else %>
 
-    <%= form_with url: volunteer_request_path(request),
+   <button
+      onclick="document.getElementById('modal-<%= request.id %>').classList.remove('hidden')"
+      class="w-full bg-pink-400 hover:bg-pink-500 transition mt-4 text-white font-bold py-4 rounded-full cursor-pointer">
+      Ik wil helpen
+    </button>
+
+    <div id="modal-<%= request.id %>"class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm px-5">
+
+      <div class="bg-white rounded-[32px] p-6 w-full max-w-sm shadow-xl">
+
+        <div class="flex items-center justify-between mb-5">
+
+          <h3 class="text-xl font-bold text-slate-800">
+            Ik wil helpen 💛
+          </h3>
+
+          <button
+            onclick="document.getElementById('modal-<%= request.id %>').classList.add('hidden')"
+            class="text-slate-400 text-2xl leading-none"
+          >
+            ×
+          </button>
+
+        </div>
+
+        <%= form_with url: volunteer_request_path(request),
               method: :patch,
-              local: true,
-              class: "mt-6" do |f| %>
+              local: true do |f| %>
 
-      <%= f.text_field :volunteer_name,
-            placeholder: "Jouw naam",
-            class: "w-full rounded-2xl border border-slate-200 px-4 py-3 mb-3" %>
+          <%= f.text_field :volunteer_name,
+                placeholder: "Jouw naam",
+                class: "w-full rounded-2xl border border-slate-200 px-4 py-3 mb-4" %>
 
-      <%= f.submit "Ik wil helpen",
-            class: "w-full bg-pink-400 hover:bg-pink-500 transition text-white font-bold py-4 rounded-full cursor-pointer" %>
+          <%= f.text_area :volunteer_note,
+                placeholder: "Extra bericht (optioneel)",
+                rows: 3,
+                class: "w-full rounded-2xl border border-slate-200 px-4 py-3 mb-5 resize-none" %>
 
-    <% end %>
+          <%= f.submit "Bevestigen",
+                class: "w-full bg-pink-400 hover:bg-pink-500 transition text-white font-bold py-4 rounded-full cursor-pointer" %>
+
+        <% end %>
+
+      </div>
+
+    </div>
 
   <% end %>
 
