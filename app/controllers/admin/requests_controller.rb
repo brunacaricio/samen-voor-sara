@@ -17,6 +17,20 @@ class Admin::RequestsController < Admin::BaseController
     end
   end
 
+  def edit
+    @request = Request.find(params[:id])
+  end
+
+  def update
+    @request = Request.find(params[:id])
+
+    if @request.update(request_params)
+      redirect_to admin_requests_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     request = Request.find(params[:id])
     request.destroy

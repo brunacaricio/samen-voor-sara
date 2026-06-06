@@ -1,0 +1,44 @@
+<div class="min-h-screen bg-[#FAF7F4]">
+  <div class="max-w-xl mx-auto px-4 py-10">
+
+    <h1 class="text-3xl font-extrabold text-slate-800 mb-8">
+      Aanvraag bewerken 🌻
+    </h1>
+
+    <%= form_with model: [:admin, @request] do |f| %>
+
+      <div class="space-y-5">
+
+        <%= f.text_field :title,
+              placeholder: "Titel",
+              class: "w-full rounded-2xl border border-slate-200 p-4" %>
+
+        <%= f.date_field :date,
+              class: "w-full rounded-2xl border border-slate-200 p-4" %>
+
+        <%= f.text_field :start_time,
+              placeholder: "14:00",
+              class: "w-full rounded-2xl border border-slate-200 p-4" %>
+
+        <%= f.text_field :end_time,
+              placeholder: "16:00",
+              class: "w-full rounded-2xl border border-slate-200 p-4" %>
+
+        <%= f.text_field :location,
+              placeholder: "Locatie",
+              class: "w-full rounded-2xl border border-slate-200 p-4" %>
+
+        <%= f.text_area :note,
+              placeholder: "Extra informatie",
+              class: "w-full rounded-2xl border border-slate-200 p-4 h-32" %>
+
+        <%= f.submit "Opslaan",
+              class: "w-full text-white font-bold py-4 rounded-full transition cursor-pointer",
+              style: "background-color: #D4A017;" %>
+
+      </div>
+
+    <% end %>
+
+  </div>
+</div>

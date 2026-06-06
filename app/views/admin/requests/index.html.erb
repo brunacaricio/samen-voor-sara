@@ -42,7 +42,14 @@
 
           <% end %>
 
-          <div class="mt-6">
+         <div class="mt-3">
+            <%= link_to "Bewerken",
+                  edit_admin_request_path(request),
+                  class: "font-semibold",
+                  style: "color: #A65E00;" %>
+          </div>
+
+          <div class="mt-3">
 
             <%= button_to "Aanvraag verwijderen",
                   admin_request_path(request),
